@@ -8,9 +8,13 @@
     nftables
     pciutils
     gcc
+    gdb
     htop
     lshw
     curl
+    jmtpfs
+    
+    kdePackages.qt6ct
 
     v2rayn
     wireguard-tools
@@ -21,14 +25,18 @@
     discord
     steam
     ayugram-desktop
+    krita
 
     appimage-run
     protonup-qt
+    lutris
+    wineWowPackages.stable
+    winetricks
     xwayland-satellite
     home-manager
 
-    alacritty
-    fuzzel
+    ghostty
     nautilus
+    pcmanfm
   ];
 }
