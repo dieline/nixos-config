@@ -11,7 +11,10 @@
     inputs.dankMaterialShell.homeModules.dankMaterialShell.default
   ];
   
-  programs.dankMaterialShell.enable = true;
+  programs.dankMaterialShell = {
+    enable = true;
+    quickshell.package = inputs.quickshell.packages.${pkgs.system}.default;
+  };
   
   programs.vscode = {
     enable = true;

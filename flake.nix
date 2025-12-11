@@ -8,19 +8,25 @@
       url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+
+    dgop = {
+      url = "github:AvengeMedia/dgop";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
     
     dankMaterialShell = {
       url = "github:AvengeMedia/DankMaterialShell";
       inputs.nixpkgs.follows = "nixpkgs";
+      inputs.dgop.follows = "dgop";
     };
-
-    stylix = {
-      url = "github:nix-community/stylix/release-25.05";
+    
+    quickshell = {
+      url = "git+https://git.outfoxxed.me/outfoxxed/quickshell";
       inputs.nixpkgs.follows = "nixpkgs";
     };
   };
   
-  outputs = inputs@{ nixpkgs, home-manager, stylix, ... }: let
+  outputs = inputs@{ nixpkgs, home-manager, ... }: let
     system = "x86_64-linux";
     # username = "po1nt";
   in {
@@ -37,16 +43,7 @@
             home-manager.useUserPackages = true;
             home-manager.extraSpecialArgs = { inherit inputs; };
         }
-        stylix.nixosModules.stylix
       ];
     };
-
-    # homeConfigurations.${username} = home-manager.lib.homeManagerConfiguration {
-    #   pkgs = nixpkgs.legacyPackages.${system};
-    #   modules = [ 
-    #     ./home.nix
-    #     inputs.plasma-manager.homeManagerModules.plasma-manager
-    #   ];
-    # };
   };
 }

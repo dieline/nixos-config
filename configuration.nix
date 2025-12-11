@@ -10,7 +10,9 @@
     ./packages.nix
     ./zapret.nix
     inputs.home-manager.nixosModules.default
+    inputs.dankMaterialShell.nixosModules.greeter
     ./nvidia.nix
+    ./vpn.nix
   ];
 
   # Bootloader.
@@ -58,6 +60,9 @@
   # Enable CUPS to print documents.
   services.printing.enable = true;
   services.gvfs.enable = true;
+  
+  services.upower.enable = true;
+  services.power-profiles-daemon.enable = true;
 
   # Enable sound with pipewire.
   services.pulseaudio.enable = false;
@@ -132,5 +137,26 @@
       pkgs.python312
       pkgs.python312Packages.torch
     ]; };
+  };
+
+  # services.openvpn.servers = {
+  #   miceik = {
+  #     config = '' config /home/po1nt/openvpn/miceik.ovpn '';
+  #     updateResolvConf = true;
+  #   };
+  # };
+  
+  virtualisation.waydroid = {
+    enable = true;
+  };
+ 
+  systemd = {
+    packages = [ pkgs.waydroid-helper ];
+    services.waydroid-mount.wantedBy = [ "multi-user.target" ];
+  };
+  
+  programs.dankMaterialShell.greeter = {
+    enable = true;
+    compositor.name = "niri";  # Or "hyprland" or "sway"
   };
 }

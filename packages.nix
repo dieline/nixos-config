@@ -1,4 +1,4 @@
-{ config, pkgs, ... }:
+{ inputs, config, pkgs, ... }:
 
 {
   environment.systemPackages = with pkgs; [
@@ -11,21 +11,27 @@
     gdb
     htop
     lshw
+    lzip
     curl
     jmtpfs
-    
+    nodejs
     kdePackages.qt6ct
+    neofetch
+    waydroid-helper
 
-    v2rayn
-    wireguard-tools
-
-    qbittorrent
     nicotine-plus
     termusic
+    sptlrx
+    lrcget
+    youtube-music
+
+    qbittorrent
     discord
     steam
     ayugram-desktop
     krita
+    libreoffice
+    jetbrains.pycharm-community
 
     appimage-run
     protonup-qt
